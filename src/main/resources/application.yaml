@@ -1,0 +1,18 @@
+spring:
+      application:
+            name: Spring Boot Restful Api
+            version: 1.0.0
+      datasource:
+            url: jdbc:postgresql://localhost:5432/mobiledb
+            username: postgres
+            password: 1234
+      jpa:
+            generate-ddl: false
+            hibernate:
+                  ddl-auto: none
+      sql:
+            init:
+                  mode: always
+                  schema-locations:
+                        - classpath:/schema.sql
+

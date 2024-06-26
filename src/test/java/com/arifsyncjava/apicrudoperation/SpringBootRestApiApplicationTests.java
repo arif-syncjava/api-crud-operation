@@ -1,4 +1,4 @@
-package com.arifsyncjava.api_crud_operation;
+package com.arifsyncjava.apicrudoperation;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

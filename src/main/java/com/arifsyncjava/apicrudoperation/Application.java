@@ -1,13 +1,13 @@
-package com.arifsyncjava.api_crud_operation;
+package com.arifsyncjava.apicrudoperation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootRestApiApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootRestApiApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
