@@ -11,7 +11,7 @@ import lombok.*;
 public class MobileDevice {
 
     private String brandName;
-    private String name;
+    private String modelName;
     @Id
     private Long imei;
 }
