@@ -4,30 +4,33 @@ import com.arifsyncjava.apicrudoperation.model.MobileDevice;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Repository
 public class MobileRepositoryImpl implements MobileRepository{
 
-
+    private final MobileJpaRepository repository;
 
 
     @Override
     public MobileDevice insert(MobileDevice mobile) {
-        return null;
+        return repository.save(mobile);
     }
 
     @Override
-    public MobileDevice selectById(Long imei) {
-        return null;
+    public Optional<MobileDevice> selectById(Long imei) {
+        return repository.findById(imei);
     }
 
     @Override
     public MobileDevice update(MobileDevice mobile) {
-        return null;
+        return repository.save(mobile);
     }
 
     @Override
     public Boolean delete(Long imei) {
-        return null;
+        repository.deleteById(imei);
+        return Boolean.TRUE;
     }
 }
