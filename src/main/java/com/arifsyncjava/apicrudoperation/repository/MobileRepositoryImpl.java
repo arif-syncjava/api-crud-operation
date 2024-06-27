@@ -30,7 +30,10 @@ public class MobileRepositoryImpl implements MobileRepository{
 
     @Override
     public Boolean delete(Long imei) {
-        repository.deleteById(imei);
-        return Boolean.TRUE;
+        if (repository.existsById(imei) ) {
+            repository.deleteById(imei);
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
     }
 }

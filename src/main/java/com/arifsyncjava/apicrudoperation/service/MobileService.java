@@ -7,8 +7,8 @@ import java.util.Optional;
 public interface MobileService {
 
     MobileDeviceDTO create (MobileDeviceDTO mobileDeviceDTO);
-    Optional<MobileDeviceDTO> readById (Long imei);
-    MobileDeviceDTO update (MobileDeviceDTO mobileDeviceDTO);
+    MobileDeviceDTO readById (Long imei);
+    MobileDeviceDTO update (Long imei, MobileDeviceDTO mobileDeviceDTO);
     Boolean delete (Long imei);
 
 }
