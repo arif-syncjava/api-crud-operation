@@ -1,6 +1,7 @@
 package com.arifsyncjava.apicrudoperation.service;
 
 import com.arifsyncjava.apicrudoperation.dto.MobileDeviceDTO;
+import com.arifsyncjava.apicrudoperation.exception.ResourceNotFoundException;
 import com.arifsyncjava.apicrudoperation.model.MobileDevice;
 import com.arifsyncjava.apicrudoperation.repository.MobileRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,7 @@ public class MobileServiceImpl implements MobileService{
     public MobileDeviceDTO readById(Long imei) {
         MobileDevice mobileDevice = mobileRepository
                 .selectById(imei)
-                .orElseThrow(() -> new RuntimeException(" Resource Not Found"));
+                .orElseThrow(() -> new ResourceNotFoundException(" Resource Not Found"));
         return convertToDTO(mobileDevice);
     }
 
@@ -35,7 +36,7 @@ public class MobileServiceImpl implements MobileService{
     public MobileDeviceDTO update(Long imei, MobileDeviceDTO mobileDeviceDTO) {
         mobileRepository
                 .selectById(imei)
-                .orElseThrow(() -> new RuntimeException(" Resource Not Found"));
+                .orElseThrow(() -> new ResourceNotFoundException(" Resource Not Found"));
 
         MobileDevice mobileDevice = convertToModel(mobileDeviceDTO);
         MobileDevice updatedDevice = mobileRepository.insert(mobileDevice);

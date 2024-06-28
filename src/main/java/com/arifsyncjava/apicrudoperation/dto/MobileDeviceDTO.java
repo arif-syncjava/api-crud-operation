@@ -10,6 +10,6 @@ import lombok.Setter;
 public class MobileDeviceDTO {
     private String brandName;
     private String modelName;
-    private Long imei;
+
 
 }
