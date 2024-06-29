@@ -3,6 +3,9 @@ package com.arifsyncjava.apicrudoperation.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+import java.util.Set;
+
 
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
@@ -12,6 +15,9 @@ public class MobileDevice {
     private Long imei;
     private String brandName;
     private String modelName;
+
+    @OneToMany
+    private List<SimCard> simCards;
 
 
 }
