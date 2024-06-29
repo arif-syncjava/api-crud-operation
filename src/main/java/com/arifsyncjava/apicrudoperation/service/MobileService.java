@@ -9,6 +9,6 @@ public interface MobileService {
     MobileDeviceDTO create (MobileDeviceDTO mobileDeviceDTO);
     MobileDeviceDTO readById (Long imei);
     MobileDeviceDTO update (Long imei, MobileDeviceDTO mobileDeviceDTO);
-    Boolean delete (Long imei);
+    void delete (Long imei);
 
 }

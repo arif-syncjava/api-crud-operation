@@ -1,10 +1,12 @@
 package com.arifsyncjava.apicrudoperation.repository;
 
 import com.arifsyncjava.apicrudoperation.model.MobileDevice;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+
 
 @RequiredArgsConstructor
 @Repository
@@ -29,11 +31,8 @@ public class MobileRepositoryImpl implements MobileRepository{
     }
 
     @Override
-    public Boolean delete(Long imei) {
-        if (repository.existsById(imei) ) {
-            repository.deleteById(imei);
-            return Boolean.TRUE;
-        }
-        return Boolean.FALSE;
+    public void delete(Long imei) {
+      repository.deleteById(imei);
     }
+
 }

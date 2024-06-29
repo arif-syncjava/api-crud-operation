@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 public class MobileDeviceDTO {
+    private Long id;
     private String brandName;
     private String modelName;
 

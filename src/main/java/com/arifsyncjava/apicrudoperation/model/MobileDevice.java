@@ -1,17 +1,17 @@
 package com.arifsyncjava.apicrudoperation.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
-@Builder
+
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-@Entity (name = "mobile_devices")
+@Entity(name = "mobile_devices")
 public class MobileDevice {
-
+    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long imei;
     private String brandName;
     private String modelName;
-    @Id
-    private Long imei;
+
+
 }

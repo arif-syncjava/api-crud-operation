@@ -21,7 +21,7 @@ public class HttpResponse {
     )
     private LocalDateTime timeStamp;
     private int httpCode;
-    private HttpStatus status;
+    private String status;
     private String message;
     private Map<?,?> data;
 

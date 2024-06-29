@@ -9,6 +9,6 @@ public interface MobileRepository {
     MobileDevice insert (MobileDevice mobile);
     Optional<MobileDevice> selectById (Long imei);
     MobileDevice update (MobileDevice mobile);
-    Boolean delete (Long imei);
+    void delete (Long imei);
 
 }

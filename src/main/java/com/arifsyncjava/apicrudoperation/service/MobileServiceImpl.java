@@ -34,18 +34,23 @@ public class MobileServiceImpl implements MobileService{
 
     @Override
     public MobileDeviceDTO update(Long imei, MobileDeviceDTO mobileDeviceDTO) {
-        mobileRepository
+        MobileDevice mobileDevice = mobileRepository
                 .selectById(imei)
                 .orElseThrow(() -> new ResourceNotFoundException(" Resource Not Found"));
-
-        MobileDevice mobileDevice = convertToModel(mobileDeviceDTO);
+        mobileDevice.setBrandName(mobileDeviceDTO.getBrandName());
+        mobileDevice.setModelName(mobileDeviceDTO.getModelName());
         MobileDevice updatedDevice = mobileRepository.insert(mobileDevice);
         return convertToDTO(updatedDevice);
 
     }
 
     @Override
-    public Boolean delete(Long imei) {
-        return mobileRepository.delete(imei);
+    public void delete(Long imei) {
+        mobileRepository
+                .selectById(imei)
+                .orElseThrow(() -> new ResourceNotFoundException(" Resource Not Found"));
+        mobileRepository.delete(imei);
+
+
     }
 }
