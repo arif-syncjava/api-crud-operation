@@ -15,7 +15,7 @@ public class MobileDeviceDTO {
     private Long imei;
     private String brandName;
     private String modelName;
-    private List<SimCard> simCards = new ArrayList<>();
+    private List<SimCard> simCards ;
 
 
 }

@@ -18,10 +18,14 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping (value = "/mobiles")
+@RequestMapping (path = "/mobiles")
 public class MobileController {
 
     private final MobileService mobileService;
+
+
+
+
 
     @PostMapping
     public ResponseEntity<HttpResponse> createDevice (
@@ -80,16 +84,11 @@ public class MobileController {
                         .build());
     }
 
-    @RequestMapping("/error")
-    public ResponseEntity<HttpResponse> handleError(HttpServletRequest request) {
-        return ResponseEntity.badRequest().body(
-                HttpResponse.builder()
-                        .timeStamp(LocalDateTime.now())
-                        .httpCode(BAD_REQUEST.value())
-                        .status(BAD_REQUEST.getReasonPhrase())
-                        .message("There is no mapping for a " + request.getMethod() +" request for this path on the server")
-                        .build());
-    }
+
+
+
+
+
 
 
 

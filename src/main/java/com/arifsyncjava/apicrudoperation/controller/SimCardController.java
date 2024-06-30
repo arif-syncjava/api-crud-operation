@@ -12,7 +12,8 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 @RequiredArgsConstructor
-@RestController (value = "/simCards")
+@RestController
+@RequestMapping(path = "/simCards")
 public class SimCardController {
     private final SimCardService simCardService;
 

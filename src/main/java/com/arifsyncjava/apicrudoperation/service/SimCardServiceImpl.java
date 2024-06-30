@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
@@ -23,8 +24,10 @@ public class SimCardServiceImpl implements SimCardService{
                 .selectById(imei)
                 .orElseThrow(() ->
                         new ResourceNotFoundException(" Device Not Found"));
-        mobileDevice.setSimCards((List<SimCard>) simCard);
-        return simRepository.save(simCard);
+        SimCard savedSimCard = simRepository.save(simCard);
+        mobileDevice.setSimCards((Set<SimCard>) savedSimCard);
+
+        return savedSimCard;
     }
 
     @Override

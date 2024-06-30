@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -18,6 +19,6 @@ public class MobileDevice {
     private String modelName;
 
     @OneToMany
-    private List<SimCard> simCards = new ArrayList<>();
+    private Set<SimCard> simCards =new HashSet<>();
 
 }
