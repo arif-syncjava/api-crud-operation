@@ -23,6 +23,17 @@ public class MobileController {
 
     private final MobileService mobileService;
 
+    @RequestMapping(path = "/error")
+    public ResponseEntity<HttpResponse> handleError() {
+        return ResponseEntity.badRequest()
+                .body(HttpResponse.builder()
+                        .timeStamp(LocalDateTime.now())
+                        .httpCode(BAD_REQUEST.value())
+                        .status(BAD_REQUEST.getReasonPhrase())
+                        .message("There is no mapping  for this path on the server")
+                        .build());
+    }
+
 
 
 

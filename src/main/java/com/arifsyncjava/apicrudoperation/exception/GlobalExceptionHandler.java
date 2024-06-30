@@ -18,18 +18,9 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 
 @RestControllerAdvice
-public class GlobalExceptionHandler implements ErrorController {
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler implements ErrorController {
 
-    @RequestMapping(path = "/error")
-    public ResponseEntity<HttpResponse> handleError() {
-        return ResponseEntity.badRequest()
-                .body(HttpResponse.builder()
-                        .timeStamp(LocalDateTime.now())
-                        .httpCode(BAD_REQUEST.value())
-                        .status(BAD_REQUEST.getReasonPhrase())
-                        .message("There is no mapping  for this path on the server")
-                        .build());
-    }
+
 
     @ExceptionHandler (ResourceNotFoundException.class)
     public ResponseEntity<HttpResponse> resourceNotFoundException (
