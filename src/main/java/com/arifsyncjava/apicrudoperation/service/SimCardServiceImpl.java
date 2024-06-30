@@ -1,19 +1,29 @@
 package com.arifsyncjava.apicrudoperation.service;
 
 import com.arifsyncjava.apicrudoperation.exception.ResourceNotFoundException;
+import com.arifsyncjava.apicrudoperation.model.MobileDevice;
 import com.arifsyncjava.apicrudoperation.model.SimCard;
+import com.arifsyncjava.apicrudoperation.repository.MobileRepository;
 import com.arifsyncjava.apicrudoperation.repository.SimCardJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 public class SimCardServiceImpl implements SimCardService{
 
     private final SimCardJpaRepository simRepository;
+    private final MobileRepository mobileRepository;
 
     @Override
-    public SimCard create(SimCard simCard) {
+    public SimCard create(Long imei, SimCard simCard) {
+        MobileDevice mobileDevice = mobileRepository
+                .selectById(imei)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(" Device Not Found"));
+        mobileDevice.setSimCards((List<SimCard>) simCard);
         return simRepository.save(simCard);
     }
 

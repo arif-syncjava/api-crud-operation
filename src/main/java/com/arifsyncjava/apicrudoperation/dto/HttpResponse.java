@@ -25,6 +25,14 @@ public class HttpResponse {
     private String message;
     private Map<?,?> data;
 
+    public HttpResponse (HttpStatus httpStatus, String message, Map<?,?> data ) {
+        this.timeStamp = LocalDateTime.now();
+        this.httpCode = httpStatus.value();
+        this.status = httpStatus.getReasonPhrase();
+        this.message = message;
+        this.data= data;
+    }
+
 
 
 

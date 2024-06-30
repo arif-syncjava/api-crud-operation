@@ -3,6 +3,7 @@ package com.arifsyncjava.apicrudoperation.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -17,7 +18,6 @@ public class MobileDevice {
     private String modelName;
 
     @OneToMany
-    private List<SimCard> simCards;
-
+    private List<SimCard> simCards = new ArrayList<>();
 
 }
