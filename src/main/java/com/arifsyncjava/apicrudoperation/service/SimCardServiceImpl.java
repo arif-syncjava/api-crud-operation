@@ -8,7 +8,6 @@ import com.arifsyncjava.apicrudoperation.repository.SimCardJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Set;
 
 @RequiredArgsConstructor
@@ -25,7 +24,7 @@ public class SimCardServiceImpl implements SimCardService{
                 .orElseThrow(() ->
                         new ResourceNotFoundException(" Device Not Found"));
         SimCard savedSimCard = simRepository.save(simCard);
-        mobileDevice.setSimCards((Set<SimCard>) savedSimCard);
+        //mobileDevice.setSimCards((Set<SimCard>) savedSimCard);
 
         return savedSimCard;
     }

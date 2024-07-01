@@ -1,5 +1,5 @@
 server:
-    error:
+      error:
           path: /mobiles/error
           whitelabel:
             enabled: false
