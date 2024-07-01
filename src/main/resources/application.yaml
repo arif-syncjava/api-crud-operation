@@ -4,11 +4,11 @@ server:
           whitelabel:
             enabled: false
 
-
 spring:
       application:
             name: Spring Boot Restful Api
             version: 1.0.0
+
 
 
       datasource:

@@ -10,7 +10,7 @@ import java.util.Set;
 
 
 @Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+ @AllArgsConstructor
 @Entity(name = "mobile_devices")
 public class MobileDevice {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -21,4 +21,6 @@ public class MobileDevice {
     @OneToMany
     private Set<SimCard> simCards =new HashSet<>();
 
+    public MobileDevice() {
+    }
 }

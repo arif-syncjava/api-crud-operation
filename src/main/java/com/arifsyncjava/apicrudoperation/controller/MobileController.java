@@ -23,8 +23,9 @@ public class MobileController {
 
     private final MobileService mobileService;
 
-    @RequestMapping(path = "/error")
-    public ResponseEntity<HttpResponse> handleError() {
+
+    @RequestMapping (path = "/error")
+    public ResponseEntity<HttpResponse> NoHandlerFoundException() {
         return ResponseEntity.badRequest()
                 .body(HttpResponse.builder()
                         .timeStamp(LocalDateTime.now())
@@ -33,10 +34,6 @@ public class MobileController {
                         .message("There is no mapping  for this path on the server")
                         .build());
     }
-
-
-
-
 
     @PostMapping
     public ResponseEntity<HttpResponse> createDevice (

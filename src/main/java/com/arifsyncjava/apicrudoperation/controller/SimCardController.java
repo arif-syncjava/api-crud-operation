@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(path = "/simCards")
+@RequestMapping(path = "/simcards")
 public class SimCardController {
     private final SimCardService simCardService;
 
@@ -62,7 +62,7 @@ public class SimCardController {
     }
 
     @DeleteMapping ("/{number}")
-    public ResponseEntity<HttpResponse> delete (Integer number) {
+    public ResponseEntity<HttpResponse> delete (@PathVariable Integer number) {
         simCardService.delete(number);
         return ResponseEntity
                 .status(HttpStatus.OK)
