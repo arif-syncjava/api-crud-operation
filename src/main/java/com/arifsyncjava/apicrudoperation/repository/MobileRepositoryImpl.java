@@ -27,7 +27,7 @@ public class MobileRepositoryImpl implements MobileRepository{
     }
 
     @Override
-    public Optional<MobileDevice> selectById(Long imei) {
+    public Optional<MobileDevice> findById(Long imei) {
         return repository.findById(imei);
     }
 

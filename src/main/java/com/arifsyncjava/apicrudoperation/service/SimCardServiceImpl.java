@@ -8,8 +8,6 @@ import com.arifsyncjava.apicrudoperation.repository.SimCardJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
-
 @RequiredArgsConstructor
 @Service
 public class SimCardServiceImpl implements SimCardService{
@@ -20,7 +18,7 @@ public class SimCardServiceImpl implements SimCardService{
     @Override
     public SimCard create(Long imei, SimCard simCard) {
         MobileDevice mobileDevice = mobileRepository
-                .selectById(imei)
+                .findById(imei)
                 .orElseThrow(() ->
                         new ResourceNotFoundException(" Device Not Found"));
         SimCard savedSimCard = simRepository.save(simCard);

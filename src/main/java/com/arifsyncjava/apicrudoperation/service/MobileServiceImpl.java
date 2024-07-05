@@ -25,9 +25,9 @@ public class MobileServiceImpl implements MobileService{
     }
 
     @Override
-    public MobileDeviceDTO readById(Long imei) {
+    public MobileDeviceDTO findById(Long imei) {
         MobileDevice mobileDevice = mobileRepository
-                .selectById(imei)
+                .findById(imei)
                 .orElseThrow(() -> new ResourceNotFoundException(" Resource Not Found"));
         return convertToDTO(mobileDevice);
     }
@@ -35,7 +35,7 @@ public class MobileServiceImpl implements MobileService{
     @Override
     public MobileDeviceDTO update(Long imei, MobileDeviceDTO mobileDeviceDTO) {
         MobileDevice mobileDevice = mobileRepository
-                .selectById(imei)
+                .findById(imei)
                 .orElseThrow(() -> new ResourceNotFoundException(" Resource Not Found"));
         mobileDevice.setBrandName(mobileDeviceDTO.getBrandName());
         mobileDevice.setModelName(mobileDeviceDTO.getModelName());
@@ -47,7 +47,7 @@ public class MobileServiceImpl implements MobileService{
     @Override
     public void delete(Long imei) {
         mobileRepository
-                .selectById(imei)
+                .findById(imei)
                 .orElseThrow(() -> new ResourceNotFoundException(" Resource Not Found"));
         mobileRepository.delete(imei);
 

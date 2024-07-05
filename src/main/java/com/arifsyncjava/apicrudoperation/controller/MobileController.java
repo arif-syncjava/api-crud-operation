@@ -2,9 +2,7 @@ package com.arifsyncjava.apicrudoperation.controller;
 
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import com.arifsyncjava.apicrudoperation.dto.MobileDeviceDTO;
-import com.arifsyncjava.apicrudoperation.exception.ResourceNotFoundException;
 import com.arifsyncjava.apicrudoperation.service.MobileService;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,7 +50,7 @@ public class MobileController {
 
     @GetMapping (path = "/{imei}")
     public ResponseEntity<HttpResponse> getMobileByImei (@PathVariable Long imei) {
-        MobileDeviceDTO savedDevice = mobileService.readById(imei);
+        MobileDeviceDTO savedDevice = mobileService.findById(imei);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(HttpResponse.builder()

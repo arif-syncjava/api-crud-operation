@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface MobileRepository {
 
     MobileDevice insert (MobileDevice mobile);
-    Optional<MobileDevice> selectById (Long imei);
+    Optional<MobileDevice> findById(Long imei);
     MobileDevice update (MobileDevice mobile);
     void delete (Long imei);
 
