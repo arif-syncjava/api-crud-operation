@@ -1,6 +1,5 @@
-package com.arifsyncjava.apicrudoperation.repository;
+package com.arifsyncjava.apicrudoperation.simcard;
 
-import com.arifsyncjava.apicrudoperation.model.SimCard;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SimCardJpaRepository extends JpaRepository<SimCard,Integer> {

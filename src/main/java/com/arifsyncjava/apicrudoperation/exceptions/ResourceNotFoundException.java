@@ -1,4 +1,4 @@
-package com.arifsyncjava.apicrudoperation.exception;
+package com.arifsyncjava.apicrudoperation.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {

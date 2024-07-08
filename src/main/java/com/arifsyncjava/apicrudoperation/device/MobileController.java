@@ -1,7 +1,6 @@
-package com.arifsyncjava.apicrudoperation.controller;
+package com.arifsyncjava.apicrudoperation.device;
 
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
-import com.arifsyncjava.apicrudoperation.dto.MobileDeviceDTO;
 import com.arifsyncjava.apicrudoperation.service.MobileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,7 +16,22 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping (path = "/mobiles")
+
 public class MobileController {
+
+    public ResponseEntity<MobileDeviceDTO> createDevice (
+            DeviceCreateRequest request) {
+
+    }
+
+
+
+
+
+
+
+
+
 
     private final MobileService mobileService;
 
@@ -77,9 +91,16 @@ public class MobileController {
                         .build());
     }
 
-    @DeleteMapping (path = "/{imei}")
-    public ResponseEntity<HttpResponse> delete (@PathVariable Long imei) {
-        mobileService.delete(imei);
+    @DeleteMapping (path = "/{id}")
+    public void deleteById (@PathVariable Long id) {
+        mobileService.deleteById(id);
+    }
+
+
+
+    @DeleteMapping (path = "/abc/{id}")
+    public ResponseEntity<HttpResponse> delete (@PathVariable(name = "id") Long imei) {
+       mobileService.deleteById(imei);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(HttpResponse.builder()

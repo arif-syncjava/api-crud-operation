@@ -1,12 +1,9 @@
-package com.arifsyncjava.apicrudoperation.dto;
+package com.arifsyncjava.apicrudoperation.device;
 
-import com.arifsyncjava.apicrudoperation.model.SimCard;
-import lombok.AllArgsConstructor;
+import com.arifsyncjava.apicrudoperation.simcard.SimCard;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter

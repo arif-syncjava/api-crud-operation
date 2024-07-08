@@ -16,7 +16,7 @@ CREATE TABLE mobile_devices (
       imei SERIAL PRIMARY KEY,
       brand_name VARCHAR (100) NOT NULL,
       model_name VARCHAR (150) NOT NULL,
-      sim_number INTEGER ,
+      sim_number INTEGER  ,
       FOREIGN KEY (sim_number) REFERENCES simcards (phone_number) ON DELETE CASCADE ON UPDATE CASCADE
 
 );

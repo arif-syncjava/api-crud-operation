@@ -1,7 +1,6 @@
-package com.arifsyncjava.apicrudoperation.controller;
+package com.arifsyncjava.apicrudoperation.simcard;
 
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
-import com.arifsyncjava.apicrudoperation.model.SimCard;
 import com.arifsyncjava.apicrudoperation.service.SimCardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,6 +14,7 @@ import java.util.Map;
 @RestController
 @RequestMapping(path = "/simcards")
 public class SimCardController {
+
     private final SimCardService simCardService;
 
     @PostMapping (path = "/{imei}")

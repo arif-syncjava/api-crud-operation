@@ -1,5 +1,6 @@
-package com.arifsyncjava.apicrudoperation.model;
+package com.arifsyncjava.apicrudoperation.device;
 
+import com.arifsyncjava.apicrudoperation.simcard.SimCard;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,13 +14,15 @@ import java.util.Set;
 @Getter @Setter
  @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "mobile_devices")
+@Entity
+@Table(name = "mobile_devices")
 public class MobileDevice {
+
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long imei;
     private String brandName;
     private String modelName;
-    @OneToMany
+    @OneToMany (orphanRemoval = true)
     private Set<SimCard> simCards =new HashSet<>();
 
     public void addSimCardToDevice (SimCard simCard) {

@@ -1,7 +1,5 @@
-package com.arifsyncjava.apicrudoperation.dtomapper;
+package com.arifsyncjava.apicrudoperation.device;
 
-import com.arifsyncjava.apicrudoperation.dto.MobileDeviceDTO;
-import com.arifsyncjava.apicrudoperation.model.MobileDevice;
 import org.springframework.beans.BeanUtils;
 
 public class MobileDeviceDTOMapper {

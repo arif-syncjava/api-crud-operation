@@ -1,4 +1,4 @@
-package com.arifsyncjava.apicrudoperation.exception;
+package com.arifsyncjava.apicrudoperation.exceptions;
 
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import org.springframework.boot.web.servlet.error.ErrorController;

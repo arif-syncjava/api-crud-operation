@@ -1,25 +1,17 @@
-package com.arifsyncjava.apicrudoperation.repository;
+package com.arifsyncjava.apicrudoperation.device.repository;
 
-import com.arifsyncjava.apicrudoperation.model.MobileDevice;
-import jakarta.transaction.Transactional;
-import lombok.NoArgsConstructor;
+import com.arifsyncjava.apicrudoperation.device.MobileDevice;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 
-
+@RequiredArgsConstructor
 @Repository
-public class MobileRepositoryImpl implements MobileRepository{
+public class MobileRepositoryImpl implements MobileRepository {
 
     private final MobileJpaRepository repository;
-
-    public MobileRepositoryImpl(MobileJpaRepository repository) {
-        this.repository = repository;
-    }
-
 
     @Override
     public MobileDevice insert(MobileDevice mobile) {
@@ -37,7 +29,7 @@ public class MobileRepositoryImpl implements MobileRepository{
     }
 
     @Override
-    public void delete(Long imei) {
+    public void deleteById(Long imei) {
       repository.deleteById(imei);
     }
 
