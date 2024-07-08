@@ -1,34 +1,29 @@
 package com.arifsyncjava.apicrudoperation.device;
 
-import com.arifsyncjava.apicrudoperation.simcard.SimCard;
-import jakarta.persistence.*;
+import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.HashSet;
-import java.util.Set;
-
+import org.springframework.util.AlternativeJdkIdGenerator;
 
 @Getter @Setter
- @NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "mobile_devices")
 public class MobileDevice {
-
-    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long imei;
+    @Id
+    private String imei = new AlternativeJdkIdGenerator().generateId().toString();
     private String brandName;
     private String modelName;
-    @OneToMany (orphanRemoval = true)
-    private Set<SimCard> simCards =new HashSet<>();
 
-    public void addSimCardToDevice (SimCard simCard) {
-        this.simCards.add(simCard);
+    public MobileDevice (MobileDeviceCreateRequest request) {
+        this.brandName = request.getBrandName();
+        this.modelName = request.getModelName();
     }
-//
-//    public MobileDevice() {
-//    }
+
+
 }

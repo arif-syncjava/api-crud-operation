@@ -1,5 +1,6 @@
 package com.arifsyncjava.apicrudoperation.device;
 
+import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import com.arifsyncjava.apicrudoperation.service.MobileService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 public class MobileController {
 
     public ResponseEntity<MobileDeviceDTO> createDevice (
-            DeviceCreateRequest request) {
+            MobileDeviceCreateRequest request) {
 
     }
 

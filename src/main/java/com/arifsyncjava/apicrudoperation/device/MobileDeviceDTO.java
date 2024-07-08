@@ -1,18 +1,21 @@
 package com.arifsyncjava.apicrudoperation.device;
 
-import com.arifsyncjava.apicrudoperation.simcard.SimCard;
-import lombok.Getter;
-import lombok.Setter;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Getter @Setter
-//@NoArgsConstructor @AllArgsConstructor
 public class MobileDeviceDTO {
-    private Long imei;
+    @JsonProperty("Brand")
     private String brandName;
+    @JsonProperty("Model")
     private String modelName;
-    private List<SimCard> simCards ;
+    @JsonProperty("IMEI-Number")
+    private String imei;
+
+    public MobileDeviceDTO (MobileDevice mobileDevice) {
+        this.brandName = mobileDevice.getBrandName();
+        this.modelName = mobileDevice.getModelName();
+        this.imei = mobileDevice.getImei();
+    }
 
 
 }
