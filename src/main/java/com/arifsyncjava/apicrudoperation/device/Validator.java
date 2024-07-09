@@ -2,11 +2,13 @@ package com.arifsyncjava.apicrudoperation.device;
 
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
 import com.arifsyncjava.apicrudoperation.exceptions.InvalidException;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+@Component
 public class Validator {
 
-    public static MobileDevice validate (MobileDeviceCreateRequest request) {
+    public  MobileDevice validate (MobileDeviceCreateRequest request) {
 
         if (brandNameIsEmpty(request.getBrandName())) {
             throw new InvalidException("Brand name required");
@@ -20,12 +22,12 @@ public class Validator {
 
     }
 
-    private static boolean brandNameIsEmpty(String brandName) {
-        return !StringUtils.hasLength(brandName);
+    private  boolean brandNameIsEmpty(String brandName) {
+        return !StringUtils.hasText(brandName);
     }
 
-    private static boolean modelNameIsEmpty(String modelName) {
-        return !StringUtils.hasLength(modelName);
+    private  boolean modelNameIsEmpty(String modelName) {
+        return !StringUtils.hasText(modelName);
     }
 
 

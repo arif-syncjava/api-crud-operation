@@ -11,7 +11,7 @@ import lombok.Setter;
 import org.springframework.util.AlternativeJdkIdGenerator;
 
 @Getter @Setter
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "mobile_devices")
 public class MobileDevice {

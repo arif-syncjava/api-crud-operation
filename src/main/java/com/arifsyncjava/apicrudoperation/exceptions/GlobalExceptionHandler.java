@@ -31,6 +31,21 @@ public class GlobalExceptionHandler extends
                         .build());
     }
 
+    @ExceptionHandler (InvalidException.class)
+    public ResponseEntity<HttpResponse> InvalidExceptionHandler (
+            InvalidException exception
+    ) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(HttpResponse.builder()
+                        .timeStamp(LocalDateTime.now())
+                        .httpCode(HttpStatus.BAD_GATEWAY.value())
+                        .status(HttpStatus.BAD_GATEWAY.getReasonPhrase())
+                        .message(exception.getMessage())
+                        .build());
+    }
+
+
 
 
 

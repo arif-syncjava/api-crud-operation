@@ -21,12 +21,13 @@ public class CreateMobileDeviceCommandHandler
         implements Command<MobileDeviceCreateRequest, HttpResponse> {
 
     private final MobileRepository mobileRepository;
+    private final Validator validator;
 
 
 
     @Override
     public ResponseEntity<HttpResponse> execute(MobileDeviceCreateRequest request) {
-        MobileDevice mobileDevice = Validator.validate(request);
+        MobileDevice mobileDevice = validator.validate(request);
         MobileDevice savedMobileDevice= mobileRepository.save(mobileDevice);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
