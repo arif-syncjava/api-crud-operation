@@ -8,7 +8,7 @@ import org.springframework.util.StringUtils;
 @Component
 public class Validator {
 
-    public  MobileDevice validate (MobileDeviceCreateRequest request) {
+    public  MobileDevice validate(MobileDeviceCreateRequest request) {
 
         if (brandNameIsEmpty(request.getBrandName())) {
             throw new InvalidException("Brand name required");

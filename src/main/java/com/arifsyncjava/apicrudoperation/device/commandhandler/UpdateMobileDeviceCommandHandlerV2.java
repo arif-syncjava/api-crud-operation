@@ -1,11 +1,10 @@
 package com.arifsyncjava.apicrudoperation.device.commandhandler;
 
-import com.arifsyncjava.apicrudoperation.Command;
 import com.arifsyncjava.apicrudoperation.device.MobileDevice;
 import com.arifsyncjava.apicrudoperation.device.MobileDeviceDTO;
 import com.arifsyncjava.apicrudoperation.device.MobileRepository;
 import com.arifsyncjava.apicrudoperation.device.Validator;
-import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceUpdateRequest;
+import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import com.arifsyncjava.apicrudoperation.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -16,30 +15,29 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 import java.util.Optional;
 
-
 @RequiredArgsConstructor
 @Service
-public class UpdateMobileDeviceCommandHandler implements
-        Command<MobileDeviceUpdateRequest, HttpResponse> {
+public class UpdateMobileDeviceCommandHandlerV2 {
 
     private final MobileRepository mobileRepository;
     private final Validator validator;
 
 
-
-
-    @Override
-    public ResponseEntity<HttpResponse> execute(MobileDeviceUpdateRequest request) {
+    public ResponseEntity<HttpResponse> execute(
+            String imei, MobileDeviceCreateRequest request) {
         Optional<MobileDevice> optionalMobileDevice =
-                mobileRepository.findById(request.getImei());
+                mobileRepository.findById(imei);
+
         if (optionalMobileDevice.isEmpty()) {
             throw new ResourceNotFoundException();
         }
-        MobileDevice mobileDevice = validator.validate(request.getRequest());
+        MobileDevice mobileDevice = validator.validate(request);
+
         MobileDevice savedDevice  = optionalMobileDevice.get();
-        savedDevice.setImei(request.getImei());
+        savedDevice.setImei(imei);
         savedDevice.setBrandName(mobileDevice.getBrandName());
         savedDevice.setModelName(mobileDevice.getModelName());
+
         MobileDevice updatedDevice = mobileRepository.save(mobileDevice);
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -51,3 +49,4 @@ public class UpdateMobileDeviceCommandHandler implements
     }
 
 }
+
