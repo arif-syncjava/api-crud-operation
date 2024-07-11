@@ -18,9 +18,11 @@ public class SimCardController {
     private final GetSimCardByNumberQueryHandler getSimCardByNumberQueryHandler;
     private final DeleteSimCardCommandHandler deleteSimCardCommandHandler;
 
-    @PostMapping
-    public ResponseEntity<HttpResponse> createSim (@RequestBody SimCard simCard) {
-        return createSimCardCommandHandler.execute(simCard);
+    @PostMapping (path = "/{imei}")
+    public ResponseEntity<HttpResponse> createSim (
+            @PathVariable("imei") String imei,
+            @RequestBody SimCard simCard) {
+        return createSimCardCommandHandler.execute(imei,simCard);
     }
 
     @GetMapping (path = "/{number}")
@@ -29,9 +31,14 @@ public class SimCardController {
         return getSimCardByNumberQueryHandler.execute(number);
     }
 
-    @PutMapping
+    @PutMapping (path = "/{imei}")
     public ResponseEntity<HttpStatus> updateSimCard (
+            @PathVariable String imei,
             @RequestBody SimCard simCard) {
+
+
+
+
         return null;
     }
 

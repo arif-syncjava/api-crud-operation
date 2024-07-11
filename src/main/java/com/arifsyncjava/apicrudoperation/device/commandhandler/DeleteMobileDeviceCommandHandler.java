@@ -1,6 +1,7 @@
 package com.arifsyncjava.apicrudoperation.device.commandhandler;
 
 import com.arifsyncjava.apicrudoperation.Command;
+import com.arifsyncjava.apicrudoperation.device.MobileDevice;
 import com.arifsyncjava.apicrudoperation.device.MobileRepository;
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import com.arifsyncjava.apicrudoperation.exceptions.ResourceNotFoundException;
@@ -22,11 +23,11 @@ public class DeleteMobileDeviceCommandHandler
     public ResponseEntity<HttpResponse> execute(String imei) {
         Optional<MobileDevice> optionalMobileDevice =
                 mobileRepository.findById(imei);
-
         if (optionalMobileDevice.isEmpty()) {
             throw new ResourceNotFoundException();
         }
-        mobileRepository.delete(optionalMobileDevice.get());
+        MobileDevice mobileDevice = optionalMobileDevice.get();
+        mobileRepository.delete(mobileDevice);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(new HttpResponse(

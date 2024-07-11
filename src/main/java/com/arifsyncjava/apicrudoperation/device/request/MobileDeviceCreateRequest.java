@@ -7,6 +7,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter @Setter
 public class MobileDeviceCreateRequest {
+    private String imei;
     private String brandName;
     private String modelName;
 

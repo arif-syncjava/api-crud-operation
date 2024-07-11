@@ -1,6 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS devices;
 SET search_path TO devices;
 
+
 DROP TABLE IF EXISTS mobile_devices;
 DROP TABLE IF EXISTS sim_cards;
 

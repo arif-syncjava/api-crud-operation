@@ -28,6 +28,7 @@ public class CreateMobileDeviceCommandHandler
     @Override
     public ResponseEntity<HttpResponse> execute(MobileDeviceCreateRequest request) {
         MobileDevice mobileDevice = mobileDeviceRequestValidator.validate(request);
+        mobileDevice.setImei(request.getImei());
         MobileDevice savedMobileDevice= mobileRepository.save(mobileDevice);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
