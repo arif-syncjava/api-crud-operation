@@ -2,21 +2,19 @@ package com.arifsyncjava.apicrudoperation.device;
 
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
 import com.arifsyncjava.apicrudoperation.exceptions.InvalidException;
-import org.hamcrest.text.IsEmptyString;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.HttpStatus;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ValidatorTests {
+public class SimCardValidatorTests {
 
-    private Validator validator;
+    private MobileDeviceRequestValidator validator;
 
     @BeforeEach
     void setup() {
-        validator = new Validator();
+        validator = new MobileDeviceRequestValidator();
     }
 
     @Test

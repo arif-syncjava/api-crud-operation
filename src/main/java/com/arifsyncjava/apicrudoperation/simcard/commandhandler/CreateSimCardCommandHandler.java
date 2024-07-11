@@ -4,7 +4,7 @@ import com.arifsyncjava.apicrudoperation.Command;
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import com.arifsyncjava.apicrudoperation.simcard.SimCard;
 import com.arifsyncjava.apicrudoperation.simcard.SimRepository;
-import com.arifsyncjava.apicrudoperation.simcard.Validator;
+import com.arifsyncjava.apicrudoperation.simcard.SimCardRequestValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ public class CreateSimCardCommandHandler implements
         Command<SimCard, HttpResponse> {
 
     private final SimRepository simRepository;
-    private final Validator validator;
+    private final SimCardRequestValidator validator;
 
     @Override
     public ResponseEntity<HttpResponse> execute(SimCard simCard) {

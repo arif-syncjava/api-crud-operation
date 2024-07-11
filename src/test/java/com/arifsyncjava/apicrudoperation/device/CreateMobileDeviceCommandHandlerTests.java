@@ -8,14 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
 
@@ -26,7 +23,7 @@ public class CreateMobileDeviceCommandHandlerTests {
     private  MobileRepository mobileRepository;
 
     @Mock
-    private Validator validator;
+    private MobileDeviceRequestValidator mobileDeviceRequestValidator;
 
     @InjectMocks
     private  CreateMobileDeviceCommandHandler
@@ -45,7 +42,7 @@ public class CreateMobileDeviceCommandHandlerTests {
         MobileDevice mobileDevice =
                 new MobileDevice("12345","Nokia","Note 9 pro");
 
-        when(validator.validate(deviceCreateRequest)).thenReturn(mobileDevice);
+        when(mobileDeviceRequestValidator.validate(deviceCreateRequest)).thenReturn(mobileDevice);
         when(mobileRepository.save(mobileDevice)).thenReturn(mobileDevice);
 
 

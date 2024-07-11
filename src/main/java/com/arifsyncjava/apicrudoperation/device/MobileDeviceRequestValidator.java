@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 @Component
-public class Validator {
+public class MobileDeviceRequestValidator {
 
     public  MobileDevice validate(MobileDeviceCreateRequest request) {
 

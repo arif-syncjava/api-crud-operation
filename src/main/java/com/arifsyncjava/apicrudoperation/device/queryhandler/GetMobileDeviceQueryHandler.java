@@ -1,7 +1,6 @@
 package com.arifsyncjava.apicrudoperation.device.queryhandler;
 
 import com.arifsyncjava.apicrudoperation.Query;
-import com.arifsyncjava.apicrudoperation.device.MobileDevice;
 import com.arifsyncjava.apicrudoperation.device.MobileDeviceDTO;
 import com.arifsyncjava.apicrudoperation.device.MobileRepository;
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;

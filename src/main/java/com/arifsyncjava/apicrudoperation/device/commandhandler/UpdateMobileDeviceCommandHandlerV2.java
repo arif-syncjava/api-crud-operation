@@ -2,8 +2,8 @@ package com.arifsyncjava.apicrudoperation.device.commandhandler;
 
 import com.arifsyncjava.apicrudoperation.device.MobileDevice;
 import com.arifsyncjava.apicrudoperation.device.MobileDeviceDTO;
+import com.arifsyncjava.apicrudoperation.device.MobileDeviceRequestValidator;
 import com.arifsyncjava.apicrudoperation.device.MobileRepository;
-import com.arifsyncjava.apicrudoperation.device.Validator;
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import com.arifsyncjava.apicrudoperation.exceptions.ResourceNotFoundException;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class UpdateMobileDeviceCommandHandlerV2 {
 
     private final MobileRepository mobileRepository;
-    private final Validator validator;
+    private final MobileDeviceRequestValidator mobileDeviceRequestValidator;
 
 
 
@@ -33,7 +33,7 @@ public class UpdateMobileDeviceCommandHandlerV2 {
         if (optionalMobileDevice.isEmpty()) {
             throw new ResourceNotFoundException();
         }
-        MobileDevice mobileDevice = validator.validate(request);
+        MobileDevice mobileDevice = mobileDeviceRequestValidator.validate(request);
 
 
         MobileDevice savedDevice  = optionalMobileDevice.get();

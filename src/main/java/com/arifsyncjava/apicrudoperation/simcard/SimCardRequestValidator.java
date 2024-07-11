@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 @Component
-public class Validator {
+public class SimCardRequestValidator {
 
     public SimCard validate (SimCard simCard) {
         if (numberIsInvalid(simCard.getNumber())) {

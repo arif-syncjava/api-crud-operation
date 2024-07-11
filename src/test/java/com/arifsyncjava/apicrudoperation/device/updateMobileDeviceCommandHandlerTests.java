@@ -7,11 +7,9 @@ import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceUpdateReques
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Optional;
@@ -25,7 +23,7 @@ public class updateMobileDeviceCommandHandlerTests {
     private MobileRepository mobileRepository;
 
     @Mock
-    private Validator validator;
+    private MobileDeviceRequestValidator mobileDeviceRequestValidator;
 
     @InjectMocks
     private UpdateMobileDeviceCommandHandler updateMobileDeviceCommandHandler;
@@ -54,7 +52,7 @@ public class updateMobileDeviceCommandHandlerTests {
                 new MobileDevice("123","Nokia","Note 9 pro");
 
         when(mobileRepository.findById(imei)).thenReturn(Optional.of(mobileDevice));
-        when(validator.validate(deviceUpdateRequest.getRequest())).thenReturn(mobileDevice);
+        when(mobileDeviceRequestValidator.validate(deviceUpdateRequest.getRequest())).thenReturn(mobileDevice);
         when(mobileRepository.save(mobileDevice)).thenReturn(mobileDevice);
 
         ResponseEntity<HttpResponse> responseEntity =
@@ -78,7 +76,7 @@ public class updateMobileDeviceCommandHandlerTests {
                 new MobileDevice("123","Nokia","Note 9 pro");
 
         when(mobileRepository.findById(imei)).thenReturn(Optional.of(mobileDevice));
-        when(validator.validate(updateRequest)).thenReturn(mobileDevice);
+        when(mobileDeviceRequestValidator.validate(updateRequest)).thenReturn(mobileDevice);
         when(mobileRepository.save(mobileDevice)).thenReturn(mobileDevice);
 
         ResponseEntity<HttpResponse> responseEntity =

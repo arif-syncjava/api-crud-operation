@@ -3,8 +3,8 @@ package com.arifsyncjava.apicrudoperation.device.commandhandler;
 import com.arifsyncjava.apicrudoperation.Command;
 import com.arifsyncjava.apicrudoperation.device.MobileDevice;
 import com.arifsyncjava.apicrudoperation.device.MobileDeviceDTO;
+import com.arifsyncjava.apicrudoperation.device.MobileDeviceRequestValidator;
 import com.arifsyncjava.apicrudoperation.device.MobileRepository;
-import com.arifsyncjava.apicrudoperation.device.Validator;
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import lombok.RequiredArgsConstructor;
@@ -21,13 +21,13 @@ public class CreateMobileDeviceCommandHandler
         implements Command<MobileDeviceCreateRequest, HttpResponse> {
 
     private final MobileRepository mobileRepository;
-    private final Validator validator;
+    private final MobileDeviceRequestValidator mobileDeviceRequestValidator;
 
 
 
     @Override
     public ResponseEntity<HttpResponse> execute(MobileDeviceCreateRequest request) {
-        MobileDevice mobileDevice = validator.validate(request);
+        MobileDevice mobileDevice = mobileDeviceRequestValidator.validate(request);
         MobileDevice savedMobileDevice= mobileRepository.save(mobileDevice);
         return ResponseEntity
                 .status(HttpStatus.CREATED)

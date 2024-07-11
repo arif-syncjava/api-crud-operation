@@ -23,12 +23,11 @@ public class DeleteSimCardCommandHandler implements
 
     @Override
     public ResponseEntity<HttpResponse> execute(String number) {
-        Optional<SimCard> optionalSimCard = simRepository
-                .findById(Integer.valueOf(number));
+        Optional<SimCard> optionalSimCard = simRepository.findById(number);
         if (optionalSimCard.isEmpty()) {
             throw new ResourceNotFoundException();
         }
-        simRepository.deleteById(Integer.valueOf(number));
+        simRepository.deleteById(number);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(new HttpResponse(
