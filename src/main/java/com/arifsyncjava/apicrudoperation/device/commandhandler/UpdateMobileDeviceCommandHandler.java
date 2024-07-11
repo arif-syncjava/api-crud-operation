@@ -45,7 +45,7 @@ public class UpdateMobileDeviceCommandHandler implements
                 .status(HttpStatus.OK)
                 .body(new HttpResponse(
                         HttpStatus.OK,
-                        "Resource Updated",
+                        "Resource updated",
                         Map.of("mobile device", new MobileDeviceDTO(updatedDevice))
                 ));
     }

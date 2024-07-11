@@ -1,6 +1,7 @@
 package com.arifsyncjava.apicrudoperation.device;
 
 import com.arifsyncjava.apicrudoperation.device.commandhandler.UpdateMobileDeviceCommandHandler;
+import com.arifsyncjava.apicrudoperation.device.commandhandler.UpdateMobileDeviceCommandHandlerV2;
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceUpdateRequest;
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
@@ -28,6 +29,9 @@ public class updateMobileDeviceCommandHandlerTests {
 
     @InjectMocks
     private UpdateMobileDeviceCommandHandler updateMobileDeviceCommandHandler;
+
+    @InjectMocks
+    private UpdateMobileDeviceCommandHandlerV2 updateMobileDeviceCommandHandlerV2;
 
     @BeforeEach
     void setup() {
@@ -62,6 +66,31 @@ public class updateMobileDeviceCommandHandlerTests {
 
 
     }
+
+
+    @Test
+    void updateMobileDeviceCommandHandlerV2_returnsException () {
+        String imei = "123";
+        MobileDeviceCreateRequest updateRequest =
+                new MobileDeviceCreateRequest("Nokia","Note 9 pro");
+
+        MobileDevice mobileDevice =
+                new MobileDevice("123","Nokia","Note 9 pro");
+
+        when(mobileRepository.findById(imei)).thenReturn(Optional.of(mobileDevice));
+        when(validator.validate(updateRequest)).thenReturn(mobileDevice);
+        when(mobileRepository.save(mobileDevice)).thenReturn(mobileDevice);
+
+        ResponseEntity<HttpResponse> responseEntity =
+                updateMobileDeviceCommandHandlerV2.execute(imei, updateRequest);
+
+
+        assertEquals("Resource updated",
+                responseEntity.getBody().getMessage());
+
+
+    }
+
 
 
 

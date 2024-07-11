@@ -2,14 +2,20 @@ package com.arifsyncjava.apicrudoperation.simcard;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor @AllArgsConstructor
 @Getter @Setter
-@Entity (name = "simcards")
+@Entity (name = "sim_cards")
 public class SimCard {
-    private String operatorName;
+
     @Id
-    private Integer number;
+    private String number;
+    private String operatorName;
+
+
 
 }

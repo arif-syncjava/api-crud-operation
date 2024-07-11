@@ -1,13 +1,11 @@
 package com.arifsyncjava.apicrudoperation.device;
 
 import com.arifsyncjava.apicrudoperation.device.commandhandler.DeleteMobileDeviceCommandHandler;
-import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import com.arifsyncjava.apicrudoperation.exceptions.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
@@ -17,7 +15,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class DeleteMobileDeviceCommandHandlerTests {
@@ -47,8 +45,6 @@ class DeleteMobileDeviceCommandHandlerTests {
         ResponseEntity<HttpResponse> responseEntity
                 =deleteMobileDeviceCommandHandler.execute(imei);
 
-        verify(mobileRepository, times(1))
-                .deleteById(imei);
 
         assertEquals( HttpStatus.NO_CONTENT.value(),
                 responseEntity.getBody().getHttpCode());

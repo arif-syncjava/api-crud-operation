@@ -23,6 +23,8 @@ public class UpdateMobileDeviceCommandHandlerV2 {
     private final Validator validator;
 
 
+
+
     public ResponseEntity<HttpResponse> execute(
             String imei, MobileDeviceCreateRequest request) {
         Optional<MobileDevice> optionalMobileDevice =
@@ -32,6 +34,7 @@ public class UpdateMobileDeviceCommandHandlerV2 {
             throw new ResourceNotFoundException();
         }
         MobileDevice mobileDevice = validator.validate(request);
+
 
         MobileDevice savedDevice  = optionalMobileDevice.get();
         savedDevice.setImei(imei);
@@ -43,7 +46,7 @@ public class UpdateMobileDeviceCommandHandlerV2 {
                 .status(HttpStatus.OK)
                 .body(new HttpResponse(
                         HttpStatus.OK,
-                        "Resource Updated",
+                        "Resource updated",
                         Map.of("mobile device", new MobileDeviceDTO(updatedDevice))
                 ));
     }
