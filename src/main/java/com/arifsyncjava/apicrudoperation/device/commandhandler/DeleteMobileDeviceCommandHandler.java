@@ -26,8 +26,7 @@ public class DeleteMobileDeviceCommandHandler
         if (optionalMobileDevice.isEmpty()) {
             throw new ResourceNotFoundException();
         }
-        MobileDevice mobileDevice = optionalMobileDevice.get();
-        mobileRepository.delete(mobileDevice);
+        mobileRepository.deleteById(imei);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(new HttpResponse(

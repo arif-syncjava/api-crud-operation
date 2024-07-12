@@ -6,7 +6,7 @@ import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import com.arifsyncjava.apicrudoperation.exceptions.InvalidException;
 import com.arifsyncjava.apicrudoperation.exceptions.ResourceNotFoundException;
 import com.arifsyncjava.apicrudoperation.simcard.SimCard;
-import com.arifsyncjava.apicrudoperation.simcard.SimCardRequestValidator;
+import com.arifsyncjava.apicrudoperation.simcard.request.SimCardRequestValidator;
 import com.arifsyncjava.apicrudoperation.simcard.SimRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

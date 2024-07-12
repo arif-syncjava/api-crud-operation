@@ -1,6 +1,7 @@
-package com.arifsyncjava.apicrudoperation.simcard;
+package com.arifsyncjava.apicrudoperation.simcard.request;
 
 import com.arifsyncjava.apicrudoperation.exceptions.InvalidException;
+import com.arifsyncjava.apicrudoperation.simcard.SimCard;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 

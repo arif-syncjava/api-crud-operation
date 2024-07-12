@@ -1,6 +1,7 @@
 package com.arifsyncjava.apicrudoperation.device;
 
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
+import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceRequestValidator;
 import com.arifsyncjava.apicrudoperation.exceptions.InvalidException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

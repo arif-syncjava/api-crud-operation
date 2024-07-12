@@ -3,7 +3,6 @@ package com.arifsyncjava.apicrudoperation.device;
 import com.arifsyncjava.apicrudoperation.device.commandhandler.CreateMobileDeviceCommandHandler;
 import com.arifsyncjava.apicrudoperation.device.commandhandler.DeleteMobileDeviceCommandHandler;
 import com.arifsyncjava.apicrudoperation.device.commandhandler.UpdateMobileDeviceCommandHandler;
-import com.arifsyncjava.apicrudoperation.device.commandhandler.UpdateMobileDeviceCommandHandlerV2;
 import com.arifsyncjava.apicrudoperation.device.queryhandler.GetMobileDeviceQueryHandler;
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceUpdateRequest;
@@ -40,22 +39,16 @@ public class MobileController {
 
     }
 
-    // Todo : 1st approach to implement update functionality
-    @PutMapping
-    public ResponseEntity<HttpResponse> updateDevice (
-            @RequestBody MobileDeviceUpdateRequest request) {
-        return updateMobileDeviceCommandHandler.execute(request);
-    }
 
-    // Todo : 2st approach to implement update functionality
     @PutMapping (path = "/{imei}")
     public ResponseEntity<HttpResponse> updateDevice (
-            @PathVariable("imei") String imei,
+            @PathVariable String imei,
             @RequestBody MobileDeviceCreateRequest request) {
-
-        return updateMobileDeviceCommandHandlerV2.execute(imei,request);
-
+        return updateMobileDeviceCommandHandler
+                .execute(new MobileDeviceUpdateRequest(imei,request));
     }
+
+
 
     @DeleteMapping(path = "/{imei}")
     public ResponseEntity<HttpResponse> deleteProductById (

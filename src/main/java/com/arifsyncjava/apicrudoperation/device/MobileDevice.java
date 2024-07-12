@@ -2,10 +2,7 @@ package com.arifsyncjava.apicrudoperation.device;
 
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
 import com.arifsyncjava.apicrudoperation.simcard.SimCard;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +24,8 @@ public class MobileDevice {
     private String brandName;
     private String modelName;
 
-    @OneToMany(orphanRemoval = true)
+
+    @OneToOne (fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<SimCard> simCardSet = new HashSet<>();
 
     public void addSimCardToMobile(SimCard simCard) {

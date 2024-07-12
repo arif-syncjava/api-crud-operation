@@ -1,6 +1,6 @@
-package com.arifsyncjava.apicrudoperation.device;
+package com.arifsyncjava.apicrudoperation.device.request;
 
-import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
+import com.arifsyncjava.apicrudoperation.device.MobileDevice;
 import com.arifsyncjava.apicrudoperation.exceptions.InvalidException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -8,7 +8,7 @@ import org.springframework.util.StringUtils;
 @Component
 public class MobileDeviceRequestValidator {
 
-    public  MobileDevice validate(MobileDeviceCreateRequest request) {
+    public MobileDevice validate(MobileDeviceCreateRequest request) {
 
         if (brandNameIsEmpty(request.getBrandName())) {
             throw new InvalidException("Brand name required");

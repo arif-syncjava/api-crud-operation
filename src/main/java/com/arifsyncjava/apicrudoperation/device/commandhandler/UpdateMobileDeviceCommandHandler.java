@@ -3,7 +3,7 @@ package com.arifsyncjava.apicrudoperation.device.commandhandler;
 import com.arifsyncjava.apicrudoperation.Command;
 import com.arifsyncjava.apicrudoperation.device.MobileDevice;
 import com.arifsyncjava.apicrudoperation.device.MobileDeviceDTO;
-import com.arifsyncjava.apicrudoperation.device.MobileDeviceRequestValidator;
+import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceRequestValidator;
 import com.arifsyncjava.apicrudoperation.device.MobileRepository;
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceUpdateRequest;
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
@@ -29,15 +29,12 @@ public class UpdateMobileDeviceCommandHandler implements
 
 
     @Override
-    public ResponseEntity<HttpResponse> execute(
-            MobileDeviceUpdateRequest request) {
-        Optional<MobileDevice> optionalMobileDevice =
-                mobileRepository.findById(request.getImei());
+    public ResponseEntity<HttpResponse> execute(MobileDeviceUpdateRequest request) {
+        Optional<MobileDevice> optionalMobileDevice = mobileRepository.findById(request.getImei());
         if (optionalMobileDevice.isEmpty()) {
             throw new ResourceNotFoundException();
         }
-        MobileDevice mobileDevice = mobileDeviceRequestValidator
-                .validate(request.getRequest());
+        MobileDevice mobileDevice = mobileDeviceRequestValidator.validate(request.getRequest());
         MobileDevice savedDevice  = optionalMobileDevice.get();
         savedDevice.setImei(request.getImei());
         savedDevice.setBrandName(mobileDevice.getBrandName());

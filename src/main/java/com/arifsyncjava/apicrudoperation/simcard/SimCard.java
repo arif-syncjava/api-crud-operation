@@ -15,6 +15,7 @@ public class SimCard {
     @Id
     private String number;
     private String operatorName;
+    private String balance = "10 TK";
 
 
 

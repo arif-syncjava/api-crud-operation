@@ -1,8 +1,8 @@
 package com.arifsyncjava.apicrudoperation.device;
 
 import com.arifsyncjava.apicrudoperation.device.commandhandler.UpdateMobileDeviceCommandHandler;
-import com.arifsyncjava.apicrudoperation.device.commandhandler.UpdateMobileDeviceCommandHandlerV2;
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
+import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceRequestValidator;
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceUpdateRequest;
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import org.junit.jupiter.api.BeforeEach;

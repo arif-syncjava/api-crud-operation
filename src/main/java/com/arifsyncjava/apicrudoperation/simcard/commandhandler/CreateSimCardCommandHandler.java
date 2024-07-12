@@ -1,12 +1,13 @@
 package com.arifsyncjava.apicrudoperation.simcard.commandhandler;
 
+import com.arifsyncjava.apicrudoperation.Command;
 import com.arifsyncjava.apicrudoperation.device.MobileDevice;
 import com.arifsyncjava.apicrudoperation.device.MobileRepository;
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import com.arifsyncjava.apicrudoperation.exceptions.InvalidException;
 import com.arifsyncjava.apicrudoperation.exceptions.ResourceNotFoundException;
 import com.arifsyncjava.apicrudoperation.simcard.SimCard;
-import com.arifsyncjava.apicrudoperation.simcard.SimCardRequestValidator;
+import com.arifsyncjava.apicrudoperation.simcard.request.SimCardRequestValidator;
 import com.arifsyncjava.apicrudoperation.simcard.SimRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Service
 public class CreateSimCardCommandHandler implements
-        UpdateCommand<String,SimCard, HttpResponse> {
+        Command<String,SimCard, HttpResponse> {
 
     private final SimRepository simRepository;
     private final MobileRepository mobileRepository;
@@ -37,8 +38,7 @@ public class CreateSimCardCommandHandler implements
         MobileDevice savedDevice = optionalMobileDevice.get();
         Set<SimCard> simCardSet = savedDevice .getSimCardSet();
         boolean exist = simCardSet.stream()
-                        .anyMatch(sim -> Objects.equals(simCard.getNumber()
-                                , validatedSim.getNumber()));
+                        .anyMatch(sim -> Objects.equals(simCard.getNumber(), validatedSim.getNumber()));
         if (exist) {
             throw new InvalidException("Number Already saved.Enter a new number");
         }

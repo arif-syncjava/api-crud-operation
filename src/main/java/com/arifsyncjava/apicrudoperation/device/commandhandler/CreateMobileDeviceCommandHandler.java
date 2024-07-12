@@ -3,7 +3,7 @@ package com.arifsyncjava.apicrudoperation.device.commandhandler;
 import com.arifsyncjava.apicrudoperation.Command;
 import com.arifsyncjava.apicrudoperation.device.MobileDevice;
 import com.arifsyncjava.apicrudoperation.device.MobileDeviceDTO;
-import com.arifsyncjava.apicrudoperation.device.MobileDeviceRequestValidator;
+import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceRequestValidator;
 import com.arifsyncjava.apicrudoperation.device.MobileRepository;
 import com.arifsyncjava.apicrudoperation.device.request.MobileDeviceCreateRequest;
 import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
