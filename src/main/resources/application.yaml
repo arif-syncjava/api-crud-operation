@@ -1,9 +1,7 @@
-server:
-      error:
-          path: /mobiles/error
-          whitelabel:
-            enabled: false
 spring:
+      output:
+            ansi:
+                  enabled: ALWAYS
       application:
             name: Spring Boot Restful Api
             version: 1.0.0
@@ -16,14 +14,13 @@ spring:
             defer-datasource-initialization: true
             generate-ddl: false
             hibernate:
-                  ddl-auto: none
+                  ddl-auto: update
       sql:
             init:
                   mode: always
                   continue-on-error: false
                   schema-locations:
                         - classpath:/schema.sql
-      output:
-            ansi:
-                  enabled: ALWAYS
+
+
 

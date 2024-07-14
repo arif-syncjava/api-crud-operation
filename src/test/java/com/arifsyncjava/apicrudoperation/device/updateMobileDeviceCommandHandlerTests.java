@@ -28,9 +28,6 @@ public class updateMobileDeviceCommandHandlerTests {
     @InjectMocks
     private UpdateMobileDeviceCommandHandler updateMobileDeviceCommandHandler;
 
-    @InjectMocks
-    private UpdateMobileDeviceCommandHandlerV2 updateMobileDeviceCommandHandlerV2;
-
     @BeforeEach
     void setup() {
         MockitoAnnotations.openMocks(this);
@@ -43,7 +40,8 @@ public class updateMobileDeviceCommandHandlerTests {
         String imei = "123";
 
         MobileDeviceCreateRequest updateRequest =
-                new MobileDeviceCreateRequest("Nokia","Note 9 pro");
+                new MobileDeviceCreateRequest("Nokia",
+                        "Mi","Note 9 pro");
 
         MobileDeviceUpdateRequest deviceUpdateRequest =
                 new MobileDeviceUpdateRequest(imei,updateRequest);
@@ -64,31 +62,6 @@ public class updateMobileDeviceCommandHandlerTests {
 
 
     }
-
-
-    @Test
-    void updateMobileDeviceCommandHandlerV2_returnsException () {
-        String imei = "123";
-        MobileDeviceCreateRequest updateRequest =
-                new MobileDeviceCreateRequest("Nokia","Note 9 pro");
-
-        MobileDevice mobileDevice =
-                new MobileDevice("123","Nokia","Note 9 pro");
-
-        when(mobileRepository.findById(imei)).thenReturn(Optional.of(mobileDevice));
-        when(mobileDeviceRequestValidator.validate(updateRequest)).thenReturn(mobileDevice);
-        when(mobileRepository.save(mobileDevice)).thenReturn(mobileDevice);
-
-        ResponseEntity<HttpResponse> responseEntity =
-                updateMobileDeviceCommandHandlerV2.execute(imei, updateRequest);
-
-
-        assertEquals("Resource updated",
-                responseEntity.getBody().getMessage());
-
-
-    }
-
 
 
 

@@ -28,13 +28,13 @@ public class GetMobileDeviceQueryHandler implements Query<String, HttpResponse> 
         if (optionalMobileDevice.isEmpty()) {
             throw new ResourceNotFoundException();
         }
+        MobileDevice mobileDevice = optionalMobileDevice.get();
 
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(new HttpResponse(
                         HttpStatus.OK,
                         null,
-                        Map.of("mobile device", new MobileDeviceDTO(
-                                optionalMobileDevice.get()))));
+                        Map.of("mobile device", new MobileDeviceDTO(mobileDevice))));
     }
 }

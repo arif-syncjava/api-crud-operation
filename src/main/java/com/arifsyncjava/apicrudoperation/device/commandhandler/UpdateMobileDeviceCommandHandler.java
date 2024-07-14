@@ -39,7 +39,7 @@ public class UpdateMobileDeviceCommandHandler implements
         savedDevice.setImei(request.getImei());
         savedDevice.setBrandName(mobileDevice.getBrandName());
         savedDevice.setModelName(mobileDevice.getModelName());
-        MobileDevice updatedDevice = mobileRepository.save(mobileDevice);
+        MobileDevice updatedDevice = mobileRepository.save(savedDevice);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(new HttpResponse(

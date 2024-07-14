@@ -1,11 +1,10 @@
 package com.arifsyncjava.apicrudoperation.device;
 
 
-import com.arifsyncjava.apicrudoperation.simcard.SimCard;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Set;
-
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 public class MobileDeviceDTO {
     @JsonProperty("Brand")
     private String brandName;
@@ -14,13 +13,13 @@ public class MobileDeviceDTO {
     @JsonProperty("IMEI-Number")
     private String imei;
 
-    private Set<SimCard> simCardSet;
+
 
     public MobileDeviceDTO (MobileDevice mobileDevice) {
         this.brandName = mobileDevice.getBrandName();
         this.modelName = mobileDevice.getModelName();
         this.imei = mobileDevice.getImei();
-        this.simCardSet = mobileDevice.getSimCardSet();
+
     }
 
 

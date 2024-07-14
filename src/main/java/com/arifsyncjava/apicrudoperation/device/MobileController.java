@@ -23,7 +23,6 @@ public class MobileController {
     private final GetMobileDeviceQueryHandler getMobileDeviceQueryHandler;
     private final UpdateMobileDeviceCommandHandler
             updateMobileDeviceCommandHandler;
-    private final UpdateMobileDeviceCommandHandlerV2 updateMobileDeviceCommandHandlerV2;
 
     @PostMapping
     public ResponseEntity<HttpResponse> createDevice (

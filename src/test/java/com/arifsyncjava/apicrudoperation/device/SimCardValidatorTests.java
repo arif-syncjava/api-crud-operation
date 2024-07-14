@@ -22,7 +22,7 @@ public class SimCardValidatorTests {
     void brandNameIsEmpty_returnsInvalidException() {
         MobileDeviceCreateRequest deviceRequest =
                 new MobileDeviceCreateRequest(
-                        "   ","iphone 10 pro");
+                        "12345","   ","iphone 10 pro");
 
 
         InvalidException exception1 = assertThrows(InvalidException.class,
@@ -30,15 +30,10 @@ public class SimCardValidatorTests {
 
         assertEquals("Brand name required", exception1.getMessage());
 
-        MobileDeviceCreateRequest deviceRequestNull =
-                new MobileDeviceCreateRequest(
-                        null ,"iphone 10 pro");
-
         InvalidException exception2 = assertThrows(InvalidException.class,
                 ()->validator.validate(deviceRequest));
 
         assertEquals("Brand name required",exception2.getMessage() );
-
 
     }
 
@@ -46,7 +41,7 @@ public class SimCardValidatorTests {
     void modelNameIsEmpty_returnsInvalidException() {
         MobileDeviceCreateRequest  deviceRequest =
                 new MobileDeviceCreateRequest(
-                        "Apple"," ");
+                        "12345","Apple"," ");
 
 
         InvalidException exception1 = assertThrows(InvalidException.class,
@@ -56,7 +51,7 @@ public class SimCardValidatorTests {
 
         MobileDeviceCreateRequest exceptionForNull =
                 new MobileDeviceCreateRequest(
-                        "Apple",null);
+                        "12345","Apple",null);
 
 
         InvalidException exception2 = assertThrows(InvalidException.class,

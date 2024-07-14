@@ -1,6 +1,7 @@
 package com.arifsyncjava.apicrudoperation.device;
 
 import com.arifsyncjava.apicrudoperation.device.queryhandler.GetMobileDeviceQueryHandler;
+import com.arifsyncjava.apicrudoperation.dto.HttpResponse;
 import com.arifsyncjava.apicrudoperation.exceptions.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,7 +39,7 @@ public class GetMobileDeviceQueryHandlerTests {
 
         when(mobileRepository.findById(imei)).thenReturn(Optional.of(mobileDevice));
 
-        ResponseEntity responseEntity =
+        ResponseEntity<HttpResponse> responseEntity =
                 getMobileDeviceQueryHandler.execute(imei);
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());

@@ -11,9 +11,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 
@@ -39,7 +37,7 @@ public class CreateMobileDeviceCommandHandlerTests {
     @Test
     void createMobileDeviceCommandHandler_returnsSuccess () {
         MobileDeviceCreateRequest deviceCreateRequest =
-                new MobileDeviceCreateRequest("Nokia","Note 9 pro");
+                new MobileDeviceCreateRequest("12345","Nokia","Note 9 pro");
         MobileDevice mobileDevice =
                 new MobileDevice("12345","Nokia","Note 9 pro");
 
